@@ -1,0 +1,35 @@
+from typing import List
+
+class Solution:
+    def palindromePath(self, n: int, edges: List[List[int]], s: str, queries: List[str]) -> List[bool]:
+        from collections import deque
+
+        graph = [[] for _ in range(n)]
+        for u, v in edges:
+            graph[u].append(v)
+            graph[v].append(u)
+
+        LOG = n.bit_length()
+        parent = [[0] * n for _ in range(LOG)]
+        depth = [0] * n
+        tin = [0] * n
+        tout = [0] * n
+        initial = [0] * n
+
+        # Itera…    if delta:
+                    update_subtree(u, delta)
+                    chars[u] = c
+
+            else:
+                u, v = int(parts[1]), int(parts[2])
+
+                pu = initial[u] ^ prefix(tin[u])
+                pv = initial[v] ^ prefix(tin[v])
+
+                w = lca(u, v)
+                mask = pu ^ pv ^ (1 << (ord(chars[w]) - ord('a')))
+
+                # At most one character may have an odd frequency.
+                ans.append((mask & (mask - 1)) == 0)
+
+        return ans
